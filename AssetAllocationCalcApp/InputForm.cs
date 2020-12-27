@@ -10,9 +10,15 @@ using System.Windows.Forms;
 
 namespace AssetAllocationCalcApp
 {
-    public partial class Form1 : Form
+    /// <summary>
+    /// CSV取り込み画面
+    /// </summary>
+    public partial class InputForm : Form
     {
-        public Form1()
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public InputForm()
         {
             InitializeComponent();
         }
