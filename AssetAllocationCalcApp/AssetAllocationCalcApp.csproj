@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Csv.cs" />
     <Compile Include="InputForm.cs">
       <SubType>Form</SubType>
     </Compile>
