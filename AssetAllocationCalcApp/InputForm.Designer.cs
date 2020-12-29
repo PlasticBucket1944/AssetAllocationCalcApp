@@ -45,6 +45,7 @@
             this.btnImport.TabIndex = 0;
             this.btnImport.Text = "取り込み";
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.BtnImport_Click);
             // 
             // textImportPath
             // 
