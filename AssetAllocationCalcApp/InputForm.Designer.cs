@@ -28,71 +28,79 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnInput = new System.Windows.Forms.Button();
-            this.textInputPath = new System.Windows.Forms.TextBox();
-            this.lblInputInfo = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnInputComplete = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.textImportPath = new System.Windows.Forms.TextBox();
+            this.lblImportInfo = new System.Windows.Forms.Label();
+            this.gridViewImportList = new System.Windows.Forms.DataGridView();
+            this.btnImportComplete = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewImportList)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnInput
+            // btnImport
             // 
-            this.btnInput.Location = new System.Drawing.Point(12, 384);
-            this.btnInput.Name = "btnInput";
-            this.btnInput.Size = new System.Drawing.Size(79, 46);
-            this.btnInput.TabIndex = 0;
-            this.btnInput.Text = "取り込み";
-            this.btnInput.UseVisualStyleBackColor = true;
+            this.btnImport.Location = new System.Drawing.Point(9, 307);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(59, 37);
+            this.btnImport.TabIndex = 0;
+            this.btnImport.Text = "取り込み";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.BtnImport_Click);
             // 
-            // textInputPath
+            // textImportPath
             // 
-            this.textInputPath.Location = new System.Drawing.Point(102, 405);
-            this.textInputPath.Name = "textInputPath";
-            this.textInputPath.Size = new System.Drawing.Size(595, 22);
-            this.textInputPath.TabIndex = 1;
+            this.textImportPath.Location = new System.Drawing.Point(76, 324);
+            this.textImportPath.Margin = new System.Windows.Forms.Padding(2);
+            this.textImportPath.Name = "textImportPath";
+            this.textImportPath.Size = new System.Drawing.Size(447, 19);
+            this.textImportPath.TabIndex = 1;
             // 
-            // lblInputInfo
+            // lblImportInfo
             // 
-            this.lblInputInfo.Location = new System.Drawing.Point(102, 384);
-            this.lblInputInfo.Name = "lblInputInfo";
-            this.lblInputInfo.Size = new System.Drawing.Size(595, 18);
-            this.lblInputInfo.TabIndex = 2;
-            this.lblInputInfo.Text = "ここに取り込み結果が表示されますここに取り込み結果が表示されますここに取り込み結果が表示されますここに取り込み結果が表示されますここに取り込み結果が表示されます";
+            this.lblImportInfo.Location = new System.Drawing.Point(76, 307);
+            this.lblImportInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblImportInfo.Name = "lblImportInfo";
+            this.lblImportInfo.Size = new System.Drawing.Size(446, 14);
+            this.lblImportInfo.TabIndex = 2;
+            this.lblImportInfo.Text = "ここに取り込み結果が表示されますここに取り込み結果が表示されますここに取り込み結果が表示されますここに取り込み結果が表示されますここに取り込み結果が表示されます";
             // 
-            // dataGridView1
+            // gridViewImportList
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 356);
-            this.dataGridView1.TabIndex = 3;
+            this.gridViewImportList.AllowUserToOrderColumns = true;
+            this.gridViewImportList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewImportList.Location = new System.Drawing.Point(9, 10);
+            this.gridViewImportList.Margin = new System.Windows.Forms.Padding(2);
+            this.gridViewImportList.Name = "gridViewImportList";
+            this.gridViewImportList.RowHeadersWidth = 51;
+            this.gridViewImportList.RowTemplate.Height = 24;
+            this.gridViewImportList.Size = new System.Drawing.Size(582, 285);
+            this.gridViewImportList.TabIndex = 3;
             // 
-            // btnInputComplete
+            // btnImportComplete
             // 
-            this.btnInputComplete.Location = new System.Drawing.Point(709, 384);
-            this.btnInputComplete.Name = "btnInputComplete";
-            this.btnInputComplete.Size = new System.Drawing.Size(79, 46);
-            this.btnInputComplete.TabIndex = 4;
-            this.btnInputComplete.Text = "取り込み確定";
-            this.btnInputComplete.UseVisualStyleBackColor = true;
+            this.btnImportComplete.Location = new System.Drawing.Point(532, 307);
+            this.btnImportComplete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnImportComplete.Name = "btnImportComplete";
+            this.btnImportComplete.Size = new System.Drawing.Size(59, 37);
+            this.btnImportComplete.TabIndex = 4;
+            this.btnImportComplete.Text = "取り込み確定";
+            this.btnImportComplete.UseVisualStyleBackColor = true;
+            this.btnImportComplete.Click += new System.EventHandler(this.BtnImportComplete_Click);
             // 
             // InputForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnInputComplete);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.lblInputInfo);
-            this.Controls.Add(this.textInputPath);
-            this.Controls.Add(this.btnInput);
+            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.Controls.Add(this.btnImportComplete);
+            this.Controls.Add(this.gridViewImportList);
+            this.Controls.Add(this.lblImportInfo);
+            this.Controls.Add(this.textImportPath);
+            this.Controls.Add(this.btnImport);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "InputForm";
             this.Text = "CSV取り込み画面";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewImportList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,11 +108,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnInput;
-        private System.Windows.Forms.TextBox textInputPath;
-        private System.Windows.Forms.Label lblInputInfo;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnInputComplete;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.TextBox textImportPath;
+        private System.Windows.Forms.Label lblImportInfo;
+        private System.Windows.Forms.DataGridView gridViewImportList;
+        private System.Windows.Forms.Button btnImportComplete;
     }
 }
 

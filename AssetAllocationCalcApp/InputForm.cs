@@ -22,5 +22,26 @@ namespace AssetAllocationCalcApp
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// 取り込みボタンクリック時イベント
+        /// </summary>
+        /// <param name="sender">イベント発生元コントロール</param>
+        /// <param name="e">イベント情報</param>
+        private void BtnImport_Click(object sender, EventArgs e)
+        {
+            Csv csv = new Csv();
+            string messege = string.Empty;
+            bool result = csv.ImportCsv(textImportPath.Text, out messege);
+        }
+
+        /// <summary>
+        /// 取り込み確定ボタンクリック時イベント
+        /// </summary>
+        /// <param name="sender">イベント発生元コントロール</param>
+        /// <param name="e">イベント情報</param>
+        private void BtnImportComplete_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
