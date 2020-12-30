@@ -39,7 +39,7 @@
             // btnImport
             // 
             this.btnImport.Location = new System.Drawing.Point(9, 307);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(2);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(59, 37);
             this.btnImport.TabIndex = 0;
@@ -50,7 +50,7 @@
             // textImportPath
             // 
             this.textImportPath.Location = new System.Drawing.Point(76, 324);
-            this.textImportPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textImportPath.Margin = new System.Windows.Forms.Padding(2);
             this.textImportPath.Name = "textImportPath";
             this.textImportPath.Size = new System.Drawing.Size(447, 19);
             this.textImportPath.TabIndex = 1;
@@ -69,7 +69,7 @@
             this.gridViewImportList.AllowUserToOrderColumns = true;
             this.gridViewImportList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridViewImportList.Location = new System.Drawing.Point(9, 10);
-            this.gridViewImportList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridViewImportList.Margin = new System.Windows.Forms.Padding(2);
             this.gridViewImportList.Name = "gridViewImportList";
             this.gridViewImportList.RowHeadersWidth = 51;
             this.gridViewImportList.RowTemplate.Height = 24;
@@ -79,12 +79,13 @@
             // btnImportComplete
             // 
             this.btnImportComplete.Location = new System.Drawing.Point(532, 307);
-            this.btnImportComplete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnImportComplete.Margin = new System.Windows.Forms.Padding(2);
             this.btnImportComplete.Name = "btnImportComplete";
             this.btnImportComplete.Size = new System.Drawing.Size(59, 37);
             this.btnImportComplete.TabIndex = 4;
             this.btnImportComplete.Text = "取り込み確定";
             this.btnImportComplete.UseVisualStyleBackColor = true;
+            this.btnImportComplete.Click += new System.EventHandler(this.BtnImportComplete_Click);
             // 
             // InputForm
             // 
@@ -96,7 +97,7 @@
             this.Controls.Add(this.lblImportInfo);
             this.Controls.Add(this.textImportPath);
             this.Controls.Add(this.btnImport);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "InputForm";
             this.Text = "CSV取り込み画面";
             ((System.ComponentModel.ISupportInitialize)(this.gridViewImportList)).EndInit();
