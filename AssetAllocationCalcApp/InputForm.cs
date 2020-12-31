@@ -39,6 +39,8 @@ namespace AssetAllocationCalcApp
 
             FundListWrapper fundList = new FundListWrapper(csv.ListHead, csv.ListBody);
             DataTable hoge = fundList.DtFundList;
+
+            this.gridViewImportList.Add(hoge);
         }
 
         /// <summary>
