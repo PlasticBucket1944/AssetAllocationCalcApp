@@ -33,16 +33,24 @@ namespace AssetAllocationCalcApp
                 return false;
             }
 
-            StreamReader sr = new StreamReader(filePath, Encoding.GetEncoding("Shift_JIS"));
-
-            // CSVファイルのヘッダ列を読み込み配列に格納
-            List<string> listHead = this.SplitCsvLine(sr.ReadLine());
-
-            // 最終行までCSVファイルを読み込み配列に格納
-            var listBody = new List<List<string>>();
-            while (!sr.EndOfStream)
+            try
             {
-                listBody.Add(this.SplitCsvLine(sr.ReadLine()));
+                StreamReader sr = new StreamReader(filePath, Encoding.GetEncoding("Shift_JIS"));
+
+                // CSVファイルのヘッダ列を読み込み配列に格納
+                List<string> listHead = this.SplitCsvLine(sr.ReadLine());
+
+                // 最終行までCSVファイルを読み込み配列に格納
+                var listBody = new List<List<string>>();
+                while (!sr.EndOfStream)
+                {
+                    listBody.Add(this.SplitCsvLine(sr.ReadLine()));
+                }
+            }
+            catch
+            {
+                resultMessage = "ファイル取り込み中にエラーが発生しました";
+                return false;
             }
 
             resultMessage = "ファイル取り込みが完了しました";
