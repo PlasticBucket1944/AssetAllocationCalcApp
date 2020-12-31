@@ -13,6 +13,32 @@ namespace AssetAllocationCalcApp
     class Csv
     {
         /// <summary>
+        ///  CSVファイル ヘッダ列
+        /// </summary>
+        private List<string> listHead = new List<string>();
+
+        /// <summary>
+        ///  CSVファイル 詳細列
+        /// </summary>
+        private List<List<string>> listBody = new List<List<string>>();
+
+        /// <summary>
+        /// CSVファイル ヘッダ列取得プロパティ
+        /// </summary>
+        public List<string> ListHead
+        {
+            get { return listHead; }
+        }
+
+        /// <summary>
+        /// CSVファイル 詳細列取得プロパティ
+        /// </summary>
+        public List<List<string>> ListBody
+        {
+            get { return listBody; }
+        }
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         public Csv()
@@ -38,10 +64,11 @@ namespace AssetAllocationCalcApp
                 StreamReader sr = new StreamReader(filePath, Encoding.GetEncoding("Shift_JIS"));
 
                 // CSVファイルのヘッダ列を読み込み配列に格納
-                List<string> listHead = this.SplitCsvLine(sr.ReadLine());
+                this.listHead = new List<string>();
+                this.listHead = this.SplitCsvLine(sr.ReadLine());
 
                 // 最終行までCSVファイルを読み込み配列に格納
-                var listBody = new List<List<string>>();
+                this.listBody = new List<List<string>>();
                 while (!sr.EndOfStream)
                 {
                     listBody.Add(this.SplitCsvLine(sr.ReadLine()));

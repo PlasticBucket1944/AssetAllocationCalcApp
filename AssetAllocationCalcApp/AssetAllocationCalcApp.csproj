@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Csv.cs" />
+    <Compile Include="FundListWrapper.cs" />
     <Compile Include="InputForm.cs">
       <SubType>Form</SubType>
     </Compile>

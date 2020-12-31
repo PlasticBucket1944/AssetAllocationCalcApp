@@ -33,6 +33,12 @@ namespace AssetAllocationCalcApp
             Csv csv = new Csv();
             string messege = string.Empty;
             bool result = csv.ImportCsv(textImportPath.Text, out messege);
+
+            this.lblImportInfo.Text = messege;
+            if (!result) return;
+
+            FundListWrapper fundList = new FundListWrapper(csv.ListHead, csv.ListBody);
+            DataTable hoge = fundList.DtFundList;
         }
 
         /// <summary>
