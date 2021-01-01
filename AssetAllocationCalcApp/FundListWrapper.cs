@@ -57,10 +57,22 @@ namespace AssetAllocationCalcApp
                 // i番目のカラムにi番目のデータを挿入
                 for (int i = 0; i < listHead.Count; i++)
                 {
-                    newRow[listHead[i]] = body[i];
+                    newRow[listHead[i]] = this.RemoveStr(body[i]);
                 }
                 dtFundList.Rows.Add(newRow);
             }
+        }
+
+        /// <summary>
+        /// 文字列から特定の文字を消去
+        /// </summary>
+        /// <param name="baseStr">対象文字列</param>
+        /// <returns>消去後の文字列</returns>
+        private string RemoveStr(string baseStr)
+        {
+            string str = baseStr.Replace(",","");
+            str = str.Replace("%","");
+            return str;
         }
     }
 }
