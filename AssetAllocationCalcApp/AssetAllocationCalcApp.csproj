@@ -47,6 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Csv.cs" />
+    <Compile Include="FundListWrapper.cs" />
+    <Compile Include="GridViewDataList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GridViewDataList.Designer.cs">
+      <DependentUpon>GridViewDataList.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +62,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GridViewDataList.resx">
+      <DependentUpon>GridViewDataList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InputForm.resx">
       <DependentUpon>InputForm.cs</DependentUpon>
     </EmbeddedResource>
