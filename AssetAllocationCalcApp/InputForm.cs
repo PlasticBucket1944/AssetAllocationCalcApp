@@ -38,9 +38,7 @@ namespace AssetAllocationCalcApp
             if (!result) return;
 
             FundListWrapper fundList = new FundListWrapper(csv.ListHead, csv.ListBody);
-            DataTable hoge = fundList.DtFundList;
-
-            this.gridViewImportList.Add(hoge);
+            this.gridViewImportList.AddData(fundList.DtFundList);
         }
 
         /// <summary>
@@ -50,6 +48,7 @@ namespace AssetAllocationCalcApp
         /// <param name="e">イベント情報</param>
         private void BtnImportComplete_Click(object sender, EventArgs e)
         {
+            this.gridViewImportList.Clear();
         }
     }
 }
