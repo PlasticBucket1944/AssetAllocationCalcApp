@@ -48,6 +48,16 @@ namespace AssetAllocationCalcApp
         /// <param name="e">イベント情報</param>
         private void BtnImportComplete_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        /// <summary>
+        /// クリアボタンクリック時イベント
+        /// </summary>
+        /// <param name="sender">イベント発生元コントロール</param>
+        /// <param name="e">イベント情報</param>
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
             this.gridViewImportList.Clear();
         }
     }

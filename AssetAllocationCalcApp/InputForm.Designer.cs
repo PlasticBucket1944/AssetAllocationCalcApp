@@ -32,12 +32,13 @@
             this.textImportPath = new System.Windows.Forms.TextBox();
             this.lblImportInfo = new System.Windows.Forms.Label();
             this.btnImportComplete = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.gridViewImportList = new AssetAllocationCalcApp.GridViewDataList();
             this.SuspendLayout();
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(12, 384);
+            this.btnImport.Location = new System.Drawing.Point(12, 495);
             this.btnImport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(79, 46);
@@ -48,7 +49,7 @@
             // 
             // textImportPath
             // 
-            this.textImportPath.Location = new System.Drawing.Point(101, 405);
+            this.textImportPath.Location = new System.Drawing.Point(97, 516);
             this.textImportPath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textImportPath.Name = "textImportPath";
             this.textImportPath.Size = new System.Drawing.Size(595, 22);
@@ -56,7 +57,7 @@
             // 
             // lblImportInfo
             // 
-            this.lblImportInfo.Location = new System.Drawing.Point(101, 384);
+            this.lblImportInfo.Location = new System.Drawing.Point(97, 495);
             this.lblImportInfo.Name = "lblImportInfo";
             this.lblImportInfo.Size = new System.Drawing.Size(595, 18);
             this.lblImportInfo.TabIndex = 2;
@@ -64,7 +65,7 @@
             // 
             // btnImportComplete
             // 
-            this.btnImportComplete.Location = new System.Drawing.Point(709, 384);
+            this.btnImportComplete.Location = new System.Drawing.Point(870, 495);
             this.btnImportComplete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnImportComplete.Name = "btnImportComplete";
             this.btnImportComplete.Size = new System.Drawing.Size(79, 46);
@@ -73,18 +74,30 @@
             this.btnImportComplete.UseVisualStyleBackColor = true;
             this.btnImportComplete.Click += new System.EventHandler(this.BtnImportComplete_Click);
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(738, 495);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(79, 46);
+            this.btnClear.TabIndex = 6;
+            this.btnClear.Text = "クリア";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
+            // 
             // gridViewImportList
             // 
             this.gridViewImportList.Location = new System.Drawing.Point(12, 12);
             this.gridViewImportList.Name = "gridViewImportList";
-            this.gridViewImportList.Size = new System.Drawing.Size(776, 356);
+            this.gridViewImportList.Size = new System.Drawing.Size(976, 456);
             this.gridViewImportList.TabIndex = 5;
             // 
             // InputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1000, 550);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.gridViewImportList);
             this.Controls.Add(this.btnImportComplete);
             this.Controls.Add(this.lblImportInfo);
@@ -105,6 +118,7 @@
         private System.Windows.Forms.Label lblImportInfo;
         private System.Windows.Forms.Button btnImportComplete;
         private GridViewDataList gridViewImportList;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 

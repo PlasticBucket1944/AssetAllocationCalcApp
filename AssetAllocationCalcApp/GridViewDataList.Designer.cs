@@ -39,7 +39,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(776, 356);
+            this.dataGridView.Size = new System.Drawing.Size(976, 456);
             this.dataGridView.TabIndex = 0;
             // 
             // GridViewDataList
@@ -48,7 +48,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridView);
             this.Name = "GridViewDataList";
-            this.Size = new System.Drawing.Size(776, 356);
+            this.Size = new System.Drawing.Size(976, 456);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

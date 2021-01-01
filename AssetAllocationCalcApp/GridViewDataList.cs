@@ -42,7 +42,7 @@ namespace AssetAllocationCalcApp
         private const string COL_DIFF_VALUE_PER = "DIFF_VALUE_PER";
 
         /// <summary>
-        /// グリッドビュー表示用データ保持用変更
+        /// グリッドビュー表示用データ保持用変数
         /// </summary>
         private DataTable sauceDataTable = new DataTable();
 
@@ -68,6 +68,13 @@ namespace AssetAllocationCalcApp
             this.dataGridView.Columns.Add(COL_DIFF_VALUE_EN, "評価差額(円)");
             this.dataGridView.Columns.Add(COL_DIFF_VALUE_PER, "評価差額(%)");
 
+            // カラム幅
+            this.dataGridView.Columns[COL_FUND_NAME].Width = 280;
+            this.dataGridView.Columns[COL_GET_VALUE].Width = 80;
+            this.dataGridView.Columns[COL_EVALUATION_VALUE].Width = 80;
+            this.dataGridView.Columns[COL_DIFF_VALUE_EN].Width = 80;
+            this.dataGridView.Columns[COL_DIFF_VALUE_PER].Width = 80;
+
             // TODO:金額をカンマ区切りにする
         }
 
@@ -89,8 +96,8 @@ namespace AssetAllocationCalcApp
         /// </summary>
         public void Clear()
         {
-            this.InitSauceDataTable();
-            this.dataGridView.DataSource = null;
+            this.sauceDataTable.Rows.Clear();
+            this.dataGridView.Rows.Clear();
         }
 
         /// <summary>
@@ -100,7 +107,7 @@ namespace AssetAllocationCalcApp
         public void AddData(DataTable data)
         {
             this.AddDataToSauceTable(data);
-            this.dataGridView.DataSource = this.sauceDataTable;
+            this.SetDataToGridView();
         }
 
         /// <summary>
@@ -178,6 +185,22 @@ namespace AssetAllocationCalcApp
                 }
 
                 this.sauceDataTable.Rows.Add(newRow);
+            }
+        }
+
+        /// <summary>
+        /// グリッドビューにデータをセット
+        /// </summary>
+        private void SetDataToGridView()
+        {
+            // 一旦グリッドビューをクリア
+            this.dataGridView.Rows.Clear();
+
+            // グリッドビューにソースデータをセット
+            foreach(DataRow row in this.sauceDataTable.Rows)
+            {
+                this.dataGridView.Rows.Add(row[COL_FUND_NAME], row[COL_GET_VALUE],
+                    row[COL_EVALUATION_VALUE], row[COL_DIFF_VALUE_EN], row[COL_DIFF_VALUE_PER]);
             }
         }
     }
