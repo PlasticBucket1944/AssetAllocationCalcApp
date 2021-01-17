@@ -75,7 +75,10 @@ namespace AssetAllocationCalcApp
             this.dataGridView.Columns[COL_DIFF_VALUE_EN].Width = 80;
             this.dataGridView.Columns[COL_DIFF_VALUE_PER].Width = 80;
 
-            // TODO:金額をカンマ区切りにする
+            // 金額をカンマ区切りにする
+            this.dataGridView.Columns[COL_GET_VALUE].DefaultCellStyle.Format = "#,0";
+            this.dataGridView.Columns[COL_EVALUATION_VALUE].DefaultCellStyle.Format = "#,0";
+            this.dataGridView.Columns[COL_DIFF_VALUE_EN].DefaultCellStyle.Format = "#,0";
         }
 
         /// <summary>
