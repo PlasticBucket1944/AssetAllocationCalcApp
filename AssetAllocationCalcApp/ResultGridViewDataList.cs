@@ -12,7 +12,7 @@ using Microsoft.SqlServer.Server;
 namespace AssetAllocationCalcApp
 {
     /// <summary>
-    /// データ表示用グリッドビュークラス
+    /// 取り込み結果データ表示用グリッドビュークラス
     /// </summary>
     public partial class ResultGridViewDataList : UserControl
     {
@@ -42,6 +42,11 @@ namespace AssetAllocationCalcApp
         private const string COL_DIFF_VALUE_PER = "DIFF_VALUE_PER";
 
         /// <summary>
+        /// カラム名：資産比率
+        /// </summary>
+        private const string COL_ASSET_PER = "ASSET_PER";
+
+        /// <summary>
         /// グリッドビュー表示用データ保持用変数
         /// </summary>
         private DataTable sauceDataTable = new DataTable();
@@ -67,6 +72,7 @@ namespace AssetAllocationCalcApp
             this.dataGridView.Columns.Add(COL_EVALUATION_VALUE, "評価金額");
             this.dataGridView.Columns.Add(COL_DIFF_VALUE_EN, "評価差額(円)");
             this.dataGridView.Columns.Add(COL_DIFF_VALUE_PER, "評価差額(%)");
+            this.dataGridView.Columns.Add(COL_ASSET_PER, "比率");
 
             // カラム幅
             this.dataGridView.Columns[COL_FUND_NAME].Width = 280;
@@ -74,6 +80,7 @@ namespace AssetAllocationCalcApp
             this.dataGridView.Columns[COL_EVALUATION_VALUE].Width = 80;
             this.dataGridView.Columns[COL_DIFF_VALUE_EN].Width = 80;
             this.dataGridView.Columns[COL_DIFF_VALUE_PER].Width = 80;
+            this.dataGridView.Columns[COL_ASSET_PER].Width = 80;
 
             // 金額をカンマ区切りにする
             this.dataGridView.Columns[COL_GET_VALUE].DefaultCellStyle.Format = "#,0";
@@ -92,6 +99,7 @@ namespace AssetAllocationCalcApp
             this.sauceDataTable.Columns.Add(COL_EVALUATION_VALUE, typeof(decimal));
             this.sauceDataTable.Columns.Add(COL_DIFF_VALUE_EN, typeof(decimal));
             this.sauceDataTable.Columns.Add(COL_DIFF_VALUE_PER, typeof(string));
+            this.sauceDataTable.Columns.Add(COL_ASSET_PER, typeof(decimal));
         }
 
         /// <summary>
