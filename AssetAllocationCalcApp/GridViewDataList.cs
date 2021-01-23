@@ -47,6 +47,14 @@ namespace AssetAllocationCalcApp
         private DataTable sauceDataTable = new DataTable();
 
         /// <summary>
+        /// 表示データテーブル取得用プロパティ
+        /// </summary>
+        public DataTable SauceDataTable
+        {
+            get { return sauceDataTable; }
+        }
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         public GridViewDataList()

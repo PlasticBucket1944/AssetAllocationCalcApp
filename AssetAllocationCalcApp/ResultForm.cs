@@ -18,10 +18,16 @@ namespace AssetAllocationCalcApp
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        /// <param name="dataTable">表示用データ</param>
-        public ResultForm(DataTable dataTable)
+        /// <param name="data">表示用データ</param>
+        public ResultForm(DataTable data)
         {
             InitializeComponent();
+
+            string[] primaryKey = { "FUND_NAME" };
+            string[] mergeColumns = { "GET_VALUE", "EVALUATION_VALUE" };
+
+            DataTable showData = DataTableFunction.MergeDataRow(data, primaryKey, mergeColumns);
+
         }
 
         /// <summary>
