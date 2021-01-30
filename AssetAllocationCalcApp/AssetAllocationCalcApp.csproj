@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Csv.cs" />
+    <Compile Include="DataTableFunction.cs" />
     <Compile Include="FundListWrapper.cs" />
     <Compile Include="GridViewDataList.cs">
       <SubType>UserControl</SubType>
@@ -62,6 +63,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultForm.Designer.cs">
+      <DependentUpon>ResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResultGridViewDataList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ResultGridViewDataList.designer.cs">
+      <DependentUpon>ResultGridViewDataList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GridViewDataList.resx">
       <DependentUpon>GridViewDataList.cs</DependentUpon>
     </EmbeddedResource>
@@ -77,6 +90,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ResultForm.resx">
+      <DependentUpon>ResultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResultGridViewDataList.resx">
+      <DependentUpon>ResultGridViewDataList.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

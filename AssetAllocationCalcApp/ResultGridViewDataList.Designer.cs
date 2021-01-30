@@ -1,6 +1,6 @@
 ﻿namespace AssetAllocationCalcApp
 {
-    partial class GridViewDataList
+    partial class ResultGridViewDataList
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -41,7 +41,6 @@
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(976, 456);
             this.dataGridView.TabIndex = 0;
-            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellValueChanged);
             // 
             // GridViewDataList
             // 

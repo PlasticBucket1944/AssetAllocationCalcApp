@@ -12,9 +12,9 @@ using Microsoft.SqlServer.Server;
 namespace AssetAllocationCalcApp
 {
     /// <summary>
-    /// データ表示用グリッドビュークラス
+    /// 取り込み結果データ表示用グリッドビュークラス
     /// </summary>
-    public partial class GridViewDataList : UserControl
+    public partial class ResultGridViewDataList : UserControl
     {
         /// <summary>
         /// カラム名：ファンド名
@@ -42,50 +42,33 @@ namespace AssetAllocationCalcApp
         private const string COL_DIFF_VALUE_PER = "DIFF_VALUE_PER";
 
         /// <summary>
+        /// カラム名：資産比率
+        /// </summary>
+        private const string COL_ASSET_PER = "ASSET_PER";
+
+        /// <summary>
         /// グリッドビュー表示用データ保持用変数
         /// </summary>
         private DataTable sauceDataTable = new DataTable();
 
         /// <summary>
-        /// 表示データテーブル取得用プロパティ
+        /// 取得金額合計
         /// </summary>
-        public DataTable SauceDataTable
-        {
-            get { return sauceDataTable; }
-        }
+        public decimal GetValueAll { get; private set; }
+
+        /// <summary>
+        /// 評価金額合計
+        /// </summary>
+        public decimal EvaluationValueAll { get; private set; }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public GridViewDataList()
+        public ResultGridViewDataList()
         {
             InitializeComponent();
             this.InitGridView();
             this.InitSauceDataTable();
-        }
-
-        /// <summary>
-        /// セル値変更時イベント
-        /// </summary>
-        /// <param name="sender">イベント発生元コントロール</param>
-        /// <param name="e">イベント情報</param>
-        private void DataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            // 選択されている行インデックス、列インデックス、値を取得
-            string selectedValue = string.Empty;
-            int selectedRow = -1;
-            int selectedCol = -1;
-            foreach (DataGridViewCell c in this.dataGridView.SelectedCells)
-            {
-                selectedRow = c.RowIndex;
-                selectedCol = c.ColumnIndex;
-                selectedValue = this.dataGridView.Rows[c.RowIndex].Cells[c.ColumnIndex].Value.ToString();
-            }
-
-            if (this.sauceDataTable.Rows.Count == 0) return;
-
-            // 保持用データテーブルに値を反映
-            this.sauceDataTable.Rows[selectedRow][selectedCol] = selectedValue;
         }
 
         /// <summary>
@@ -99,6 +82,7 @@ namespace AssetAllocationCalcApp
             this.dataGridView.Columns.Add(COL_EVALUATION_VALUE, "評価金額");
             this.dataGridView.Columns.Add(COL_DIFF_VALUE_EN, "評価差額(円)");
             this.dataGridView.Columns.Add(COL_DIFF_VALUE_PER, "評価差額(%)");
+            this.dataGridView.Columns.Add(COL_ASSET_PER, "比率(%)");
 
             // カラム幅
             this.dataGridView.Columns[COL_FUND_NAME].Width = 280;
@@ -106,6 +90,7 @@ namespace AssetAllocationCalcApp
             this.dataGridView.Columns[COL_EVALUATION_VALUE].Width = 80;
             this.dataGridView.Columns[COL_DIFF_VALUE_EN].Width = 80;
             this.dataGridView.Columns[COL_DIFF_VALUE_PER].Width = 80;
+            this.dataGridView.Columns[COL_ASSET_PER].Width = 80;
 
             // 金額をカンマ区切りにする
             this.dataGridView.Columns[COL_GET_VALUE].DefaultCellStyle.Format = "#,0";
@@ -124,6 +109,7 @@ namespace AssetAllocationCalcApp
             this.sauceDataTable.Columns.Add(COL_EVALUATION_VALUE, typeof(decimal));
             this.sauceDataTable.Columns.Add(COL_DIFF_VALUE_EN, typeof(decimal));
             this.sauceDataTable.Columns.Add(COL_DIFF_VALUE_PER, typeof(string));
+            this.sauceDataTable.Columns.Add(COL_ASSET_PER, typeof(decimal));
         }
 
         /// <summary>
@@ -158,68 +144,25 @@ namespace AssetAllocationCalcApp
             {
                 DataRow newRow = this.sauceDataTable.NewRow();
 
-                // 証券によってCSVヘッダー名が異なる
-                // ファンド名
-                if (row.Table.Columns.Contains("ファンド名"))
+                // 保持用データテーブル行に値を代入
+                foreach (DataColumn col in row.Table.Columns)
                 {
-                    // SBI
-                    newRow[COL_FUND_NAME] = row["ファンド名"];
-                }
-                if (row.Table.Columns.Contains("ファンド"))
-                {
-                    // 楽天
-                    newRow[COL_FUND_NAME] = row["ファンド"];
+                    newRow[col.ToString()] = row[col.ToString()];
                 }
 
-                // 取得金額
-                if (row.Table.Columns.Contains("買付金額"))
-                {
-                    // SBI
-                    newRow[COL_GET_VALUE] = row["買付金額"];
-                }
-                if (row.Table.Columns.Contains("取得総額[円]"))
-                {
-                    // 楽天
-                    newRow[COL_GET_VALUE] = row["取得総額[円]"];
-                }
-
-                // 評価額　
-                if (row.Table.Columns.Contains("評価金額"))
-                {
-                    // SBI
-                    newRow[COL_EVALUATION_VALUE] = row["評価金額"];
-                }
-                if (row.Table.Columns.Contains("時価評価額[円]"))
-                {
-                    // 楽天
-                    newRow[COL_EVALUATION_VALUE] = row["時価評価額[円]"];
-                }
-
-                // 評価差額(円)
-                if (row.Table.Columns.Contains("トータルリターン（円）"))
-                {
-                    // SBI
-                    newRow[COL_DIFF_VALUE_EN] = row["トータルリターン（円）"];
-                }
-                if (row.Table.Columns.Contains("評価損益[円]"))
-                {
-                    // 楽天
-                    newRow[COL_DIFF_VALUE_EN] = row["評価損益[円]"];
-                }
-
-                // 評価差額(%)
-                if (row.Table.Columns.Contains("トータルリターン（率）"))
-                {
-                    // SBI
-                    newRow[COL_DIFF_VALUE_PER] = row["トータルリターン（率）"];
-                }
-                if (row.Table.Columns.Contains("評価損益[％]"))
-                {
-                    // 楽天
-                    newRow[COL_DIFF_VALUE_PER] = row["評価損益[％]"];
-                }
+                // 総合計値を計算しておく
+                this.GetValueAll += Convert.ToInt32(row[COL_GET_VALUE]);
+                this.EvaluationValueAll += Convert.ToInt32(row[COL_EVALUATION_VALUE]);
 
                 this.sauceDataTable.Rows.Add(newRow);
+            }
+
+            // 資産の割合を計算(%)
+            foreach (DataRow row in this.sauceDataTable.Rows)
+            {
+                int value = Convert.ToInt32(row[COL_EVALUATION_VALUE]); // 評価額
+                decimal per = (value / this.EvaluationValueAll) * 100; // 割合を%形式で計算
+                row[COL_ASSET_PER] = Math.Round(per, 2, MidpointRounding.AwayFromZero); // 小数第三位で四捨五入
             }
         }
 
@@ -234,8 +177,9 @@ namespace AssetAllocationCalcApp
             // グリッドビューにソースデータをセット
             foreach(DataRow row in this.sauceDataTable.Rows)
             {
-                this.dataGridView.Rows.Add(row[COL_FUND_NAME], row[COL_GET_VALUE],
-                    row[COL_EVALUATION_VALUE], row[COL_DIFF_VALUE_EN], row[COL_DIFF_VALUE_PER]);
+                this.dataGridView.Rows.Add(
+                    row[COL_FUND_NAME], row[COL_GET_VALUE], row[COL_EVALUATION_VALUE],
+                    row[COL_DIFF_VALUE_EN], row[COL_DIFF_VALUE_PER], row[COL_ASSET_PER]);
             }
         }
     }
