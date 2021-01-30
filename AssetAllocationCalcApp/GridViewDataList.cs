@@ -65,6 +65,30 @@ namespace AssetAllocationCalcApp
         }
 
         /// <summary>
+        /// セル値変更時イベント
+        /// </summary>
+        /// <param name="sender">イベント発生元コントロール</param>
+        /// <param name="e">イベント情報</param>
+        private void DataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            // 選択されている行インデックス、列インデックス、値を取得
+            string selectedValue = string.Empty;
+            int selectedRow = -1;
+            int selectedCol = -1;
+            foreach (DataGridViewCell c in this.dataGridView.SelectedCells)
+            {
+                selectedRow = c.RowIndex;
+                selectedCol = c.ColumnIndex;
+                selectedValue = this.dataGridView.Rows[c.RowIndex].Cells[c.ColumnIndex].Value.ToString();
+            }
+
+            if (this.sauceDataTable.Rows.Count == 0) return;
+
+            // 保持用データテーブルに値を反映
+            this.sauceDataTable.Rows[selectedRow][selectedCol] = selectedValue;
+        }
+
+        /// <summary>
         /// グリッドビュー初期設定
         /// </summary>
         private void InitGridView()
