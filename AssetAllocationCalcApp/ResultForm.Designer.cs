@@ -28,20 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.resultGridViewDataList1 = new AssetAllocationCalcApp.ResultGridViewDataList();
             this.btnReturn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textGetValueAll = new System.Windows.Forms.TextBox();
             this.textEvaluationValueAll = new System.Windows.Forms.TextBox();
+            this.gridViewDataList = new AssetAllocationCalcApp.ResultGridViewDataList();
+            this.textDiffAllValue = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // resultGridViewDataList1
-            // 
-            this.resultGridViewDataList1.Location = new System.Drawing.Point(13, 13);
-            this.resultGridViewDataList1.Name = "resultGridViewDataList1";
-            this.resultGridViewDataList1.Size = new System.Drawing.Size(976, 456);
-            this.resultGridViewDataList1.TabIndex = 0;
             // 
             // btnReturn
             // 
@@ -86,17 +81,42 @@
             this.textEvaluationValueAll.Size = new System.Drawing.Size(148, 22);
             this.textEvaluationValueAll.TabIndex = 5;
             // 
+            // gridViewDataList
+            // 
+            this.gridViewDataList.Location = new System.Drawing.Point(13, 13);
+            this.gridViewDataList.Name = "gridViewDataList";
+            this.gridViewDataList.Size = new System.Drawing.Size(976, 456);
+            this.gridViewDataList.TabIndex = 0;
+            // 
+            // textDiffAllValue
+            // 
+            this.textDiffAllValue.Location = new System.Drawing.Point(716, 504);
+            this.textDiffAllValue.Name = "textDiffAllValue";
+            this.textDiffAllValue.Size = new System.Drawing.Size(148, 22);
+            this.textDiffAllValue.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(613, 507);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "評価差額";
+            // 
             // ResultForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 550);
+            this.Controls.Add(this.textDiffAllValue);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.textEvaluationValueAll);
             this.Controls.Add(this.textGetValueAll);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReturn);
-            this.Controls.Add(this.resultGridViewDataList1);
+            this.Controls.Add(this.gridViewDataList);
             this.Name = "ResultForm";
             this.Text = "取り込み結果画面";
             this.ResumeLayout(false);
@@ -106,11 +126,13 @@
 
         #endregion
 
-        private ResultGridViewDataList resultGridViewDataList1;
+        private ResultGridViewDataList gridViewDataList;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textGetValueAll;
         private System.Windows.Forms.TextBox textEvaluationValueAll;
+        private System.Windows.Forms.TextBox textDiffAllValue;
+        private System.Windows.Forms.Label label3;
     }
 }

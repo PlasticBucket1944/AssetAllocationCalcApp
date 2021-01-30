@@ -52,6 +52,16 @@ namespace AssetAllocationCalcApp
         private DataTable sauceDataTable = new DataTable();
 
         /// <summary>
+        /// 取得金額合計
+        /// </summary>
+        public decimal GetValueAll { get; private set; }
+
+        /// <summary>
+        /// 評価金額合計
+        /// </summary>
+        public decimal EvaluationValueAll { get; private set; }
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         public ResultGridViewDataList()
@@ -134,68 +144,25 @@ namespace AssetAllocationCalcApp
             {
                 DataRow newRow = this.sauceDataTable.NewRow();
 
-                // 証券によってCSVヘッダー名が異なる
-                // ファンド名
-                if (row.Table.Columns.Contains("ファンド名"))
+                // 保持用データテーブル行に値を代入
+                foreach (DataColumn col in row.Table.Columns)
                 {
-                    // SBI
-                    newRow[COL_FUND_NAME] = row["ファンド名"];
-                }
-                if (row.Table.Columns.Contains("ファンド"))
-                {
-                    // 楽天
-                    newRow[COL_FUND_NAME] = row["ファンド"];
+                    newRow[col.ToString()] = row[col.ToString()];
                 }
 
-                // 取得金額
-                if (row.Table.Columns.Contains("買付金額"))
-                {
-                    // SBI
-                    newRow[COL_GET_VALUE] = row["買付金額"];
-                }
-                if (row.Table.Columns.Contains("取得総額[円]"))
-                {
-                    // 楽天
-                    newRow[COL_GET_VALUE] = row["取得総額[円]"];
-                }
-
-                // 評価額　
-                if (row.Table.Columns.Contains("評価金額"))
-                {
-                    // SBI
-                    newRow[COL_EVALUATION_VALUE] = row["評価金額"];
-                }
-                if (row.Table.Columns.Contains("時価評価額[円]"))
-                {
-                    // 楽天
-                    newRow[COL_EVALUATION_VALUE] = row["時価評価額[円]"];
-                }
-
-                // 評価差額(円)
-                if (row.Table.Columns.Contains("トータルリターン（円）"))
-                {
-                    // SBI
-                    newRow[COL_DIFF_VALUE_EN] = row["トータルリターン（円）"];
-                }
-                if (row.Table.Columns.Contains("評価損益[円]"))
-                {
-                    // 楽天
-                    newRow[COL_DIFF_VALUE_EN] = row["評価損益[円]"];
-                }
-
-                // 評価差額(%)
-                if (row.Table.Columns.Contains("トータルリターン（率）"))
-                {
-                    // SBI
-                    newRow[COL_DIFF_VALUE_PER] = row["トータルリターン（率）"];
-                }
-                if (row.Table.Columns.Contains("評価損益[％]"))
-                {
-                    // 楽天
-                    newRow[COL_DIFF_VALUE_PER] = row["評価損益[％]"];
-                }
+                // 総合計値を計算しておく
+                this.GetValueAll += Convert.ToInt32(row[COL_GET_VALUE]);
+                this.EvaluationValueAll += Convert.ToInt32(row[COL_EVALUATION_VALUE]);
 
                 this.sauceDataTable.Rows.Add(newRow);
+            }
+
+            // 資産の割合を計算(%)
+            foreach (DataRow row in this.sauceDataTable.Rows)
+            {
+                int value = Convert.ToInt32(row[COL_EVALUATION_VALUE]); // 評価額
+                decimal per = (value / this.EvaluationValueAll) * 100; // 割合を%形式で計算
+                row[COL_ASSET_PER] = Math.Round(per, 2, MidpointRounding.AwayFromZero); // 小数第三位で四捨五入
             }
         }
 
@@ -210,8 +177,9 @@ namespace AssetAllocationCalcApp
             // グリッドビューにソースデータをセット
             foreach(DataRow row in this.sauceDataTable.Rows)
             {
-                this.dataGridView.Rows.Add(row[COL_FUND_NAME], row[COL_GET_VALUE],
-                    row[COL_EVALUATION_VALUE], row[COL_DIFF_VALUE_EN], row[COL_DIFF_VALUE_PER]);
+                this.dataGridView.Rows.Add(
+                    row[COL_FUND_NAME], row[COL_GET_VALUE], row[COL_EVALUATION_VALUE],
+                    row[COL_DIFF_VALUE_EN], row[COL_DIFF_VALUE_PER], row[COL_ASSET_PER]);
             }
         }
     }

@@ -32,6 +32,13 @@ namespace AssetAllocationCalcApp
             string[] mergeColumns = { "GET_VALUE", "EVALUATION_VALUE" };
 
             this.showData = DataTableFunction.MergeDataRow(data, primaryKey, mergeColumns);
+            this.gridViewDataList.AddData(this.showData);
+
+            // 総合計値を計算して表示
+            this.textGetValueAll.Text = this.gridViewDataList.GetValueAll.ToString();
+            this.textEvaluationValueAll.Text = this.gridViewDataList.EvaluationValueAll.ToString();
+            this.textDiffAllValue.Text = 
+                (this.gridViewDataList.EvaluationValueAll - this.gridViewDataList.GetValueAll).ToString();
 
         }
 
@@ -43,14 +50,6 @@ namespace AssetAllocationCalcApp
         private void BtnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        /// <summary>
-        /// データテーブル編集
-        /// </summary>
-        private void EditData()
-        {
-            this.showData.Columns.Add("ASSET_PER", typeof(decimal));
         }
     }
 }

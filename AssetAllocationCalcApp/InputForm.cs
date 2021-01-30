@@ -49,6 +49,7 @@ namespace AssetAllocationCalcApp
         private void BtnImportComplete_Click(object sender, EventArgs e)
         {
             ResultForm resultForm = new ResultForm(gridViewImportList.SauceDataTable);
+            resultForm.Show();
         }
 
         /// <summary>
