@@ -35,10 +35,10 @@ namespace AssetAllocationCalcApp
             this.gridViewDataList.AddData(this.showData);
 
             // 総合計値を計算して表示
-            this.textGetValueAll.Text = this.gridViewDataList.GetValueAll.ToString();
-            this.textEvaluationValueAll.Text = this.gridViewDataList.EvaluationValueAll.ToString();
+            this.textGetValueAll.Text = this.gridViewDataList.GetValueAll.ToString("#,##0");
+            this.textEvaluationValueAll.Text = this.gridViewDataList.EvaluationValueAll.ToString("#,##0");
             this.textDiffAllValue.Text = 
-                (this.gridViewDataList.EvaluationValueAll - this.gridViewDataList.GetValueAll).ToString();
+                (this.gridViewDataList.EvaluationValueAll - this.gridViewDataList.GetValueAll).ToString("#,##0");
 
         }
 
