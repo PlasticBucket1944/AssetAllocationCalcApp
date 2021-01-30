@@ -72,7 +72,7 @@ namespace AssetAllocationCalcApp
             this.dataGridView.Columns.Add(COL_EVALUATION_VALUE, "評価金額");
             this.dataGridView.Columns.Add(COL_DIFF_VALUE_EN, "評価差額(円)");
             this.dataGridView.Columns.Add(COL_DIFF_VALUE_PER, "評価差額(%)");
-            this.dataGridView.Columns.Add(COL_ASSET_PER, "比率");
+            this.dataGridView.Columns.Add(COL_ASSET_PER, "比率(%)");
 
             // カラム幅
             this.dataGridView.Columns[COL_FUND_NAME].Width = 280;

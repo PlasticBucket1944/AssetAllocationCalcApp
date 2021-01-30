@@ -16,6 +16,11 @@ namespace AssetAllocationCalcApp
     public partial class ResultForm : Form
     {
         /// <summary>
+        /// 表示用データテーブル
+        /// </summary>
+        private DataTable showData = new DataTable();
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="data">表示用データ</param>
@@ -26,7 +31,7 @@ namespace AssetAllocationCalcApp
             string[] primaryKey = { "FUND_NAME" };
             string[] mergeColumns = { "GET_VALUE", "EVALUATION_VALUE" };
 
-            DataTable showData = DataTableFunction.MergeDataRow(data, primaryKey, mergeColumns);
+            this.showData = DataTableFunction.MergeDataRow(data, primaryKey, mergeColumns);
 
         }
 
@@ -38,6 +43,14 @@ namespace AssetAllocationCalcApp
         private void BtnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// データテーブル編集
+        /// </summary>
+        private void EditData()
+        {
+            this.showData.Columns.Add("ASSET_PER", typeof(decimal));
         }
     }
 }

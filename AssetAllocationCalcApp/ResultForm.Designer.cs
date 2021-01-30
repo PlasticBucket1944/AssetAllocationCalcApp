@@ -30,6 +30,10 @@
         {
             this.resultGridViewDataList1 = new AssetAllocationCalcApp.ResultGridViewDataList();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textGetValueAll = new System.Windows.Forms.TextBox();
+            this.textEvaluationValueAll = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // resultGridViewDataList1
@@ -50,16 +54,53 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.BtnReturn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(348, 479);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "取得金額合計";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(348, 507);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 15);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "評価金額合計";
+            // 
+            // textGetValueAll
+            // 
+            this.textGetValueAll.Location = new System.Drawing.Point(451, 476);
+            this.textGetValueAll.Name = "textGetValueAll";
+            this.textGetValueAll.Size = new System.Drawing.Size(148, 22);
+            this.textGetValueAll.TabIndex = 4;
+            // 
+            // textEvaluationValueAll
+            // 
+            this.textEvaluationValueAll.Location = new System.Drawing.Point(451, 504);
+            this.textEvaluationValueAll.Name = "textEvaluationValueAll";
+            this.textEvaluationValueAll.Size = new System.Drawing.Size(148, 22);
+            this.textEvaluationValueAll.TabIndex = 5;
+            // 
             // ResultForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 550);
+            this.Controls.Add(this.textEvaluationValueAll);
+            this.Controls.Add(this.textGetValueAll);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.resultGridViewDataList1);
             this.Name = "ResultForm";
             this.Text = "取り込み結果画面";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -67,5 +108,9 @@
 
         private ResultGridViewDataList resultGridViewDataList1;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textGetValueAll;
+        private System.Windows.Forms.TextBox textEvaluationValueAll;
     }
 }
