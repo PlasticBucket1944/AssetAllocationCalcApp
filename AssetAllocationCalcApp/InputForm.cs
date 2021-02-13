@@ -32,7 +32,7 @@ namespace AssetAllocationCalcApp
         {
             Csv csv = new Csv();
             string messege = string.Empty;
-            bool result = csv.ImportCsv(textImportPath.Text, out messege);
+            bool result = csv.ImportCsv(this.textImportPath.Text, out messege);
 
             this.lblImportInfo.Text = messege;
             if (!result) return;
@@ -60,6 +60,23 @@ namespace AssetAllocationCalcApp
         private void BtnClear_Click(object sender, EventArgs e)
         {
             this.gridViewImportList.Clear();
+        }
+
+        /// <summary>
+        /// ファイル選択ボタンクリック時イベント
+        /// </summary>
+        /// <param name="sender">イベント発生元コントロール</param>
+        /// <param name="e">イベント情報</param>
+        private void BtnFileSelect_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            //はじめに表示されるフォルダを指定
+            fileDialog.InitialDirectory = @"C:\";
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // ファイルダイアログで選択したパスをテキストボックスに代入
+                this.textImportPath.Text = fileDialog.FileName;
+            }
         }
     }
 }
