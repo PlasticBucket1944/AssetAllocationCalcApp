@@ -34,14 +34,15 @@
             this.btnImportComplete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.gridViewImportList = new AssetAllocationCalcApp.GridViewDataList();
+            this.btnFileSelect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(12, 495);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnImport.Location = new System.Drawing.Point(9, 396);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(79, 46);
+            this.btnImport.Size = new System.Drawing.Size(59, 37);
             this.btnImport.TabIndex = 0;
             this.btnImport.Text = "取り込み";
             this.btnImport.UseVisualStyleBackColor = true;
@@ -49,26 +50,27 @@
             // 
             // textImportPath
             // 
-            this.textImportPath.Location = new System.Drawing.Point(97, 516);
-            this.textImportPath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textImportPath.Location = new System.Drawing.Point(136, 413);
+            this.textImportPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textImportPath.Name = "textImportPath";
-            this.textImportPath.Size = new System.Drawing.Size(595, 22);
+            this.textImportPath.Size = new System.Drawing.Size(447, 19);
             this.textImportPath.TabIndex = 1;
             // 
             // lblImportInfo
             // 
-            this.lblImportInfo.Location = new System.Drawing.Point(97, 495);
+            this.lblImportInfo.Location = new System.Drawing.Point(136, 396);
+            this.lblImportInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblImportInfo.Name = "lblImportInfo";
-            this.lblImportInfo.Size = new System.Drawing.Size(595, 18);
+            this.lblImportInfo.Size = new System.Drawing.Size(446, 14);
             this.lblImportInfo.TabIndex = 2;
             this.lblImportInfo.Text = "ここに取り込み結果が表示されますここに取り込み結果が表示されますここに取り込み結果が表示されますここに取り込み結果が表示されますここに取り込み結果が表示されます";
             // 
             // btnImportComplete
             // 
-            this.btnImportComplete.Location = new System.Drawing.Point(870, 495);
-            this.btnImportComplete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnImportComplete.Location = new System.Drawing.Point(670, 396);
+            this.btnImportComplete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnImportComplete.Name = "btnImportComplete";
-            this.btnImportComplete.Size = new System.Drawing.Size(79, 46);
+            this.btnImportComplete.Size = new System.Drawing.Size(59, 37);
             this.btnImportComplete.TabIndex = 4;
             this.btnImportComplete.Text = "取り込み確定";
             this.btnImportComplete.UseVisualStyleBackColor = true;
@@ -76,10 +78,10 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(738, 495);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClear.Location = new System.Drawing.Point(604, 396);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(79, 46);
+            this.btnClear.Size = new System.Drawing.Size(59, 37);
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "クリア";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -87,23 +89,36 @@
             // 
             // gridViewImportList
             // 
-            this.gridViewImportList.Location = new System.Drawing.Point(12, 12);
+            this.gridViewImportList.Location = new System.Drawing.Point(9, 10);
+            this.gridViewImportList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gridViewImportList.Name = "gridViewImportList";
-            this.gridViewImportList.Size = new System.Drawing.Size(976, 456);
+            this.gridViewImportList.Size = new System.Drawing.Size(732, 365);
             this.gridViewImportList.TabIndex = 5;
+            // 
+            // btnFileSelect
+            // 
+            this.btnFileSelect.Location = new System.Drawing.Point(73, 396);
+            this.btnFileSelect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFileSelect.Name = "btnFileSelect";
+            this.btnFileSelect.Size = new System.Drawing.Size(59, 37);
+            this.btnFileSelect.TabIndex = 7;
+            this.btnFileSelect.Text = " ファイル 選択";
+            this.btnFileSelect.UseVisualStyleBackColor = true;
+            this.btnFileSelect.Click += new System.EventHandler(this.BtnFileSelect_Click);
             // 
             // InputForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 550);
+            this.ClientSize = new System.Drawing.Size(750, 440);
+            this.Controls.Add(this.btnFileSelect);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.gridViewImportList);
             this.Controls.Add(this.btnImportComplete);
             this.Controls.Add(this.lblImportInfo);
             this.Controls.Add(this.textImportPath);
             this.Controls.Add(this.btnImport);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "InputForm";
             this.Text = "CSV取り込み画面";
             this.ResumeLayout(false);
@@ -119,6 +134,7 @@
         private System.Windows.Forms.Button btnImportComplete;
         private GridViewDataList gridViewImportList;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnFileSelect;
     }
 }
 
