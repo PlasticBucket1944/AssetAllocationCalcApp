@@ -16,11 +16,28 @@ namespace AssetAllocationCalcApp
     public partial class InputForm : Form
     {
         /// <summary>
+        /// ファンドグループマスター
+        /// </summary>
+        private FundGroupMaster fundGroupMaster = new FundGroupMaster();
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         public InputForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// フォームロード時イベント
+        /// </summary>
+        /// <param name="sender">イベント発生元コントロール</param>
+        /// <param name="e">イベント情報</param>
+        private void InputForm_Load(object sender, EventArgs e)
+        {
+            string messege = string.Empty;
+            this.fundGroupMaster.ReadMasterData(out messege);
+            this.lblImportInfo.Text = messege;
         }
 
         /// <summary>
