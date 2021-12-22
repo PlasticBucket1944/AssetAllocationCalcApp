@@ -28,7 +28,7 @@ namespace AssetAllocationCalcApp
         {
             InitializeComponent();
 
-            string[] primaryKey = { "FUND_NAME" };
+            string[] primaryKey = { "FUND_TYPE" };
             string[] mergeColumns = { "GET_VALUE", "EVALUATION_VALUE" };
 
             this.showData = DataTableFunction.MergeDataRow(data, primaryKey, mergeColumns);

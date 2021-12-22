@@ -16,7 +16,7 @@ namespace AssetAllocationCalcApp
         /// <summary>
         /// データテーブル型マスターデータ取得・設定用プロパティ
         /// </summary>
-        static public DataTable Data { get; set; } = new DataTable();
+        static public DataTable Data { get; private set; } = new DataTable();
 
         /// <summary>
         /// マスターデータの取り込みに成功したか
@@ -66,5 +66,25 @@ namespace AssetAllocationCalcApp
             ImportResultMessage = "ファンド種別マスターファイル取り込みに成功しました";
             IsSucceededImport = true;
         }
+
+        /// <summary>
+        /// ファンド名に紐づいた種別を検索し取得
+        /// </summary>
+        /// <param name="fundName">ファンド名</param>
+        /// <returns>種別 見つからない場合はstring.empty</returns>
+        static public string FindFundType(string fundName)
+        {
+            if (string.IsNullOrEmpty(fundName)) return string.Empty;
+
+            DataRow[] dr = Data.Select($"NAME='{fundName}'");
+
+            if (dr.Length > 0)
+            {
+                return Convert.ToString(dr[0]["TYPE"]);
+            }
+
+            return string.Empty;
+        }
+
     }
 }
