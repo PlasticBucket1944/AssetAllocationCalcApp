@@ -24,6 +24,18 @@ namespace AssetAllocationCalcApp
         }
 
         /// <summary>
+        /// フォームロード時イベント
+        /// </summary>
+        /// <param name="sender">イベント発生元コントロール</param>
+        /// <param name="e">イベント情報</param>
+        private void InputForm_Load(object sender, EventArgs e)
+        {
+            // exeと同ディレクトリからマスターデータを取得
+            string messege = FundTypeMaster.ImportResultMessage;
+            this.lblImportInfo.Text = messege;
+        }
+
+        /// <summary>
         /// 取り込みボタンクリック時イベント
         /// </summary>
         /// <param name="sender">イベント発生元コントロール</param>

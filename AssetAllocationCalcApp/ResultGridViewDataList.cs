@@ -17,9 +17,9 @@ namespace AssetAllocationCalcApp
     public partial class ResultGridViewDataList : UserControl
     {
         /// <summary>
-        /// カラム名：ファンド名
+        /// カラム名：ファンド種別
         /// </summary>
-        private const string COL_FUND_NAME = "FUND_NAME";
+        private const string COL_FUND_TYPE = "FUND_TYPE";
 
         /// <summary>
         /// カラム名：取得金額
@@ -30,16 +30,6 @@ namespace AssetAllocationCalcApp
         /// カラム名：評価金額
         /// </summary>
         private const string COL_EVALUATION_VALUE = "EVALUATION_VALUE";
-
-        /// <summary>
-        /// カラム名：評価差額(円)
-        /// </summary>
-        private const string COL_DIFF_VALUE_EN = "DIFF_VALUE_EN";
-
-        /// <summary>
-        /// カラム名：評価差額(%)
-        /// </summary>
-        private const string COL_DIFF_VALUE_PER = "DIFF_VALUE_PER";
 
         /// <summary>
         /// カラム名：資産比率
@@ -77,25 +67,20 @@ namespace AssetAllocationCalcApp
         private void InitGridView()
         {
             // カラム追加
-            this.dataGridView.Columns.Add(COL_FUND_NAME, "ファンド名");
+            this.dataGridView.Columns.Add(COL_FUND_TYPE, "ファンド種別");
             this.dataGridView.Columns.Add(COL_GET_VALUE, "取得金額");
             this.dataGridView.Columns.Add(COL_EVALUATION_VALUE, "評価金額");
-            this.dataGridView.Columns.Add(COL_DIFF_VALUE_EN, "評価差額(円)");
-            this.dataGridView.Columns.Add(COL_DIFF_VALUE_PER, "評価差額(%)");
             this.dataGridView.Columns.Add(COL_ASSET_PER, "比率(%)");
 
             // カラム幅
-            this.dataGridView.Columns[COL_FUND_NAME].Width = 280;
+            this.dataGridView.Columns[COL_FUND_TYPE].Width = 250;
             this.dataGridView.Columns[COL_GET_VALUE].Width = 80;
             this.dataGridView.Columns[COL_EVALUATION_VALUE].Width = 80;
-            this.dataGridView.Columns[COL_DIFF_VALUE_EN].Width = 80;
-            this.dataGridView.Columns[COL_DIFF_VALUE_PER].Width = 80;
             this.dataGridView.Columns[COL_ASSET_PER].Width = 80;
 
             // 金額をカンマ区切りにする
             this.dataGridView.Columns[COL_GET_VALUE].DefaultCellStyle.Format = "#,0";
             this.dataGridView.Columns[COL_EVALUATION_VALUE].DefaultCellStyle.Format = "#,0";
-            this.dataGridView.Columns[COL_DIFF_VALUE_EN].DefaultCellStyle.Format = "#,0";
         }
 
         /// <summary>
@@ -104,11 +89,9 @@ namespace AssetAllocationCalcApp
         private void InitSauceDataTable()
         {
             this.sauceDataTable = new DataTable("FUND_LIST");
-            this.sauceDataTable.Columns.Add(COL_FUND_NAME, typeof(string));
+            this.sauceDataTable.Columns.Add(COL_FUND_TYPE, typeof(string));
             this.sauceDataTable.Columns.Add(COL_GET_VALUE, typeof(decimal));
             this.sauceDataTable.Columns.Add(COL_EVALUATION_VALUE, typeof(decimal));
-            this.sauceDataTable.Columns.Add(COL_DIFF_VALUE_EN, typeof(decimal));
-            this.sauceDataTable.Columns.Add(COL_DIFF_VALUE_PER, typeof(string));
             this.sauceDataTable.Columns.Add(COL_ASSET_PER, typeof(decimal));
         }
 
@@ -145,10 +128,9 @@ namespace AssetAllocationCalcApp
                 DataRow newRow = this.sauceDataTable.NewRow();
 
                 // 保持用データテーブル行に値を代入
-                foreach (DataColumn col in row.Table.Columns)
-                {
-                    newRow[col.ToString()] = row[col.ToString()];
-                }
+                newRow[COL_FUND_TYPE] = row[COL_FUND_TYPE];
+                newRow[COL_GET_VALUE] = row[COL_GET_VALUE];
+                newRow[COL_EVALUATION_VALUE] = row[COL_EVALUATION_VALUE];
 
                 // 総合計値を計算しておく
                 this.GetValueAll += Convert.ToInt32(row[COL_GET_VALUE]);
@@ -178,8 +160,7 @@ namespace AssetAllocationCalcApp
             foreach(DataRow row in this.sauceDataTable.Rows)
             {
                 this.dataGridView.Rows.Add(
-                    row[COL_FUND_NAME], row[COL_GET_VALUE], row[COL_EVALUATION_VALUE],
-                    row[COL_DIFF_VALUE_EN], row[COL_DIFF_VALUE_PER], row[COL_ASSET_PER]);
+                    row[COL_FUND_TYPE], row[COL_GET_VALUE], row[COL_EVALUATION_VALUE], row[COL_ASSET_PER]);
             }
         }
     }

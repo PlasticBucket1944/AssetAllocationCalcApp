@@ -22,6 +22,11 @@ namespace AssetAllocationCalcApp
         private const string COL_FUND_NAME = "FUND_NAME";
 
         /// <summary>
+        /// カラム名：ファンド種別
+        /// </summary>
+        private const string COL_FUND_TYPE = "FUND_TYPE";
+
+        /// <summary>
         /// カラム名：取得金額
         /// </summary>
         private const string COL_GET_VALUE = "GET_VALUE";
@@ -79,7 +84,7 @@ namespace AssetAllocationCalcApp
             {
                 selectedRow = c.RowIndex;
                 selectedCol = c.ColumnIndex;
-                selectedValue = this.dataGridView.Rows[c.RowIndex].Cells[c.ColumnIndex].Value.ToString();
+                selectedValue = Convert.ToString(this.dataGridView.Rows[c.RowIndex].Cells[c.ColumnIndex].Value);
             }
 
             if (this.sauceDataTable.Rows.Count == 0) return;
@@ -95,13 +100,15 @@ namespace AssetAllocationCalcApp
         {
             // カラム追加
             this.dataGridView.Columns.Add(COL_FUND_NAME, "ファンド名");
+            this.dataGridView.Columns.Add(COL_FUND_TYPE, "ファンド種別");
             this.dataGridView.Columns.Add(COL_GET_VALUE, "取得金額");
             this.dataGridView.Columns.Add(COL_EVALUATION_VALUE, "評価金額");
             this.dataGridView.Columns.Add(COL_DIFF_VALUE_EN, "評価差額(円)");
             this.dataGridView.Columns.Add(COL_DIFF_VALUE_PER, "評価差額(%)");
 
             // カラム幅
-            this.dataGridView.Columns[COL_FUND_NAME].Width = 280;
+            this.dataGridView.Columns[COL_FUND_NAME].Width = 240;
+            this.dataGridView.Columns[COL_FUND_TYPE].Width = 100;
             this.dataGridView.Columns[COL_GET_VALUE].Width = 80;
             this.dataGridView.Columns[COL_EVALUATION_VALUE].Width = 80;
             this.dataGridView.Columns[COL_DIFF_VALUE_EN].Width = 80;
@@ -120,6 +127,7 @@ namespace AssetAllocationCalcApp
         {
             this.sauceDataTable = new DataTable("FUND_LIST");
             this.sauceDataTable.Columns.Add(COL_FUND_NAME, typeof(string));
+            this.sauceDataTable.Columns.Add(COL_FUND_TYPE, typeof(string));
             this.sauceDataTable.Columns.Add(COL_GET_VALUE, typeof(decimal));
             this.sauceDataTable.Columns.Add(COL_EVALUATION_VALUE, typeof(decimal));
             this.sauceDataTable.Columns.Add(COL_DIFF_VALUE_EN, typeof(decimal));
@@ -157,19 +165,24 @@ namespace AssetAllocationCalcApp
             foreach (DataRow row in dataTable.Rows)
             {
                 DataRow newRow = this.sauceDataTable.NewRow();
+                string fundName = string.Empty;
 
                 // 証券によってCSVヘッダー名が異なる
                 // ファンド名
                 if (row.Table.Columns.Contains("ファンド名"))
                 {
                     // SBI
-                    newRow[COL_FUND_NAME] = row["ファンド名"];
+                    fundName = Convert.ToString(row["ファンド名"]);
                 }
                 if (row.Table.Columns.Contains("ファンド"))
                 {
                     // 楽天
-                    newRow[COL_FUND_NAME] = row["ファンド"];
+                    fundName = Convert.ToString(row["ファンド"]);
                 }
+                newRow[COL_FUND_NAME] = fundName;
+
+                // 種別
+                newRow[COL_FUND_TYPE] = FundTypeMaster.FindFundType(fundName);
 
                 // 取得金額
                 if (row.Table.Columns.Contains("買付金額"))
@@ -234,7 +247,7 @@ namespace AssetAllocationCalcApp
             // グリッドビューにソースデータをセット
             foreach(DataRow row in this.sauceDataTable.Rows)
             {
-                this.dataGridView.Rows.Add(row[COL_FUND_NAME], row[COL_GET_VALUE],
+                this.dataGridView.Rows.Add(row[COL_FUND_NAME], row[COL_FUND_TYPE], row[COL_GET_VALUE],
                     row[COL_EVALUATION_VALUE], row[COL_DIFF_VALUE_EN], row[COL_DIFF_VALUE_PER]);
             }
         }

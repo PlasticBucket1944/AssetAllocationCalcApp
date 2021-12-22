@@ -33,14 +33,14 @@
             this.lblImportInfo = new System.Windows.Forms.Label();
             this.btnImportComplete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.gridViewImportList = new AssetAllocationCalcApp.GridViewDataList();
             this.btnFileSelect = new System.Windows.Forms.Button();
+            this.gridViewImportList = new AssetAllocationCalcApp.GridViewDataList();
             this.SuspendLayout();
             // 
             // btnImport
             // 
             this.btnImport.Location = new System.Drawing.Point(9, 396);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(2);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(59, 37);
             this.btnImport.TabIndex = 0;
@@ -51,7 +51,7 @@
             // textImportPath
             // 
             this.textImportPath.Location = new System.Drawing.Point(136, 413);
-            this.textImportPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textImportPath.Margin = new System.Windows.Forms.Padding(2);
             this.textImportPath.Name = "textImportPath";
             this.textImportPath.Size = new System.Drawing.Size(447, 19);
             this.textImportPath.TabIndex = 1;
@@ -68,7 +68,7 @@
             // btnImportComplete
             // 
             this.btnImportComplete.Location = new System.Drawing.Point(670, 396);
-            this.btnImportComplete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnImportComplete.Margin = new System.Windows.Forms.Padding(2);
             this.btnImportComplete.Name = "btnImportComplete";
             this.btnImportComplete.Size = new System.Drawing.Size(59, 37);
             this.btnImportComplete.TabIndex = 4;
@@ -79,13 +79,24 @@
             // btnClear
             // 
             this.btnClear.Location = new System.Drawing.Point(604, 396);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(59, 37);
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "クリア";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
+            // 
+            // btnFileSelect
+            // 
+            this.btnFileSelect.Location = new System.Drawing.Point(73, 396);
+            this.btnFileSelect.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFileSelect.Name = "btnFileSelect";
+            this.btnFileSelect.Size = new System.Drawing.Size(59, 37);
+            this.btnFileSelect.TabIndex = 7;
+            this.btnFileSelect.Text = " ファイル 選択";
+            this.btnFileSelect.UseVisualStyleBackColor = true;
+            this.btnFileSelect.Click += new System.EventHandler(this.BtnFileSelect_Click);
             // 
             // gridViewImportList
             // 
@@ -94,17 +105,6 @@
             this.gridViewImportList.Name = "gridViewImportList";
             this.gridViewImportList.Size = new System.Drawing.Size(732, 365);
             this.gridViewImportList.TabIndex = 5;
-            // 
-            // btnFileSelect
-            // 
-            this.btnFileSelect.Location = new System.Drawing.Point(73, 396);
-            this.btnFileSelect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnFileSelect.Name = "btnFileSelect";
-            this.btnFileSelect.Size = new System.Drawing.Size(59, 37);
-            this.btnFileSelect.TabIndex = 7;
-            this.btnFileSelect.Text = " ファイル 選択";
-            this.btnFileSelect.UseVisualStyleBackColor = true;
-            this.btnFileSelect.Click += new System.EventHandler(this.BtnFileSelect_Click);
             // 
             // InputForm
             // 
@@ -118,9 +118,10 @@
             this.Controls.Add(this.lblImportInfo);
             this.Controls.Add(this.textImportPath);
             this.Controls.Add(this.btnImport);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "InputForm";
             this.Text = "CSV取り込み画面";
+            this.Load += new System.EventHandler(this.InputForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

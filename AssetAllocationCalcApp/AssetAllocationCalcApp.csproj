@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Csv.cs" />
     <Compile Include="DataTableFunction.cs" />
+    <Compile Include="FundTypeMaster.cs" />
     <Compile Include="FundListWrapper.cs" />
     <Compile Include="GridViewDataList.cs">
       <SubType>UserControl</SubType>
