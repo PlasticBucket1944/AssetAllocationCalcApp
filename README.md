@@ -5,7 +5,9 @@ SBIと楽天２つ使ってるので手動で計算するのが面倒だった
 
 # フォルダ構成
 AssetAllocationCalcApp.exe
+
 AssetAllocationCalcApp.exe.config
+
 FundGroupMaster.csv
 
 この３つのファイルを同ディレクトリ内に配置してください。※FundGroupMaster.csvは無くても動きます。
